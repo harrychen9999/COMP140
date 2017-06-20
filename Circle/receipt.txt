@@ -1,0 +1,131 @@
+Recipe:
+1.define a function named distance, which is used to return the distance between two given points:(point0x, point0y),(point1x, point1y)
+	
+	1.0.translate four parameters (point0x, point0y, point1x, point1y into float types
+	
+	1.1.use the formula that the distance between two points=((x-x1)^2+(y-y1)^2)^1/2 to calculate the distance
+	
+	1.2.assign the value of distance to a variable named distance_between_points
+	
+	1.3.return the value of the variable distance_between_points
+
+
+2.define a function named midpoint, which is used to return the x-coordinate and y-coordinate of the midpoint of two given points(point0x,point0y), (point1x, point1y)
+	
+	2.0.translate four parameters point0x, point0y, point1x, point1y into float types
+
+	2.1.when given coordinates of two points, according to the formula:x-coordinate of midpoint=the sum of x-coordinates/2
+									   y-coordinate of midpoint=the sum of y-coordinates/2
+	    calculate the value of x-coordinate and y-coordinate of the midpoint
+	
+	2.2.assign the value of x-coordinate of midpoint to the variable x_mid_point
+	    assign the value of y-coordinate of midpoint to the variable y_mid_point
+	
+	2.3.return the value of the variable x_mid_point
+	    return the value of the variable y_mid_point
+								
+
+3.define a function named slope, which is used to return the slope of the line formed by two given points(point0x, point0),(point1x, point1y)
+	
+	3.0.translate four parameters point0x, point0y, point1x, point1y into float types
+	
+	3.1.when a line is formed by two given points, according to the formula,the slope of the line=the difference between x-coordinates/the difference between y-coordinates
+	    calculate the value of the slope of the line
+	
+	3.2.assign the value of the slope of the line to the variable named slope_between_points
+	
+	3.3.return the value of the variable slope_between_points
+
+
+4.define a function named perp, which is used to return the slope of the line perpendicular to the line with the lineslope(lineslope must be non-zero)
+	
+	4.0.translate four parameters point0x, point0y, point1x, point1y into float types
+	
+	4.1.according to the formula when given the slope of a line, the slope of another line which is perpendicular to the given line=-1/the slope of the given line(lineslope)
+	
+	4.2.assign the value of the calculated slope to the variable named perp_slope
+
+	4.3.return the value of the variable perp_slope
+
+
+5.define a function named intersect, which is used to find the intersection point of two lines with given slopes(slope0 and slope1), x-coordinates and y-coordinates of certain points(point0x, point0)(point1x, point1y)
+  (two slopes must be different)
+	
+	5.0.translate three parameters slope0,point0x,point0y into float types
+	
+	5.1.according to the general expression of a line:y=k*x+b(k is the slope0,b is the intersection with y-axis), the intersection of the line and y-axis(b)=y(point0y)-slope0*point0x
+            calculate intersection of each line 
+	
+	5.2.assign the value of y-coordinates of two intersections(with y-axis) to variables y_intersect0, y_intersect1 
+
+	5.3.according to the equation, when two lines intersect,
+	    the slope of a line(slope0)*the x-coordinate of the instersection(point0x)+the y-coordinate of the intersection(y_intersect0)
+	    =the slope of anotherline(slope1)*the x-coordinate of the instersection(point1x)+the y-coordinate of the intersection(y_intersect1)
+	    calculate the value of the x-coordinate of the intersection formed by two lines:value=(y_intersect1- y_intersect0)/(slope0-slope1)
+	
+	5.4.according to the equation, the value of y-coordinate of the intersection formed by two lines = intersect_x*slope0+y_intersect0
+	
+	5.5.assign the value of y-coordinate of the intersection to the variable intersect_y
+	    assign the value of x-coordinate of the intersection to the variable intersect_x
+
+	5.6.return the value of variable intersect_y,intersect_x 
+
+
+6.define a function named make_circle, which is used when given three points(point0x, point0y) (point1x, point1y) (point2x, point2y),return the center and radius of a circle that intersects them
+  (The points must not be co-linear and no two points can have the same x or y values)
+	
+	6.0.translate six parameters point0x, point0y, point1x, point1y, point2x, point2y into float types
+								
+	6.1.call the function midpoint() to return the x-coordinate and y-coordinate of the midpoint of two points(point0x, point0y) (point1x, point1y)	
+
+	6.2.assign the value of x-coordinate and y-coordinate of the midpoint to the variable x_midpoint1, y_midpoint1
+
+	6.3.call the function slope() to return the slope of the line formed by two points(point0x, point0y) (point1x, point1y)
+
+	6.4.assign the value of the slope to th variable slope1
+
+	6.5.call the function perp() to return the slope of the line which is perpendicular to the line with slope1
+
+	6.6.assign value of the slope returned by function perp() to variable perpendicular_slope1
+		
+	6.7.call the function midpoint() to return the x-coordinate and y-coordinate of the midpoint of two points(point1x, point1y) (point2x, point2y)	
+
+	6.8.assign the value of x-coordinate and y-coordinate of the midpoint to the variable x_midpoint2, y_midpoint2
+
+	6.9.call the function slope() to return the slope of the line formed by two points(point1x, point1y) (point2x, point2y)
+
+	6.91.assign the value of the slope to th variable slope2
+
+	6.92.call the function perp() to return the slope of the line which is perpendicular to the line with slope2
+
+	6.93.assign value of the slope returned by function perp() to variable perpendicular_slope2
+
+	6.94.call the function intersect()to return x-coordinate and y-coordinate of the intersection formed by two lines, one with the slope perpendicular_slope1 across the point(x_midpoint1,y_midpoint1)
+	     another one with the slope perpendicular_slope2 across the point(x_midpoint2,y_midpoint2)
+	
+	6.95.according to Pythagorean theorem, the raidus=square root of ((the differences between x-coordinates of two points(intersectx, intersecty)(point0x,point0y))^2 + (the differences between y-coordinates of two points(intersectx, intersecty)(point0x,point0y))^2)
+	     calculate the value of radius
+	
+	6.96.assign the value of radius to the variable radius
+	
+	6.97.return the value of intersectx, intersecty, radius
+
+
+7.call the function make_circle(), replace parameters point0x, point0y, point1x, point1y, point2x, point2y with coordinates of three given points
+
+
+
+
+
+
+
+
+
+Discussion:
+
+Since the general equation of a circle is: x^2+y^2+Dx+Ey+F=0(D,E,F are numbers)
+We can replace x,y in the equation with (x1,y1) or (x2,y2) or (x3,y3)
+In this way, we can work out the value of D,E,F
+Then we can know the whole equation
+According to the formula, Radius=1/2*(D^2+E^2-4F)^1/2
+the coordinates of center=(-D/2,-E/2)
